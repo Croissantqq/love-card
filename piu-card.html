@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kartu Ucapan Terimakasih untuk Piu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #f0f8ff;
+      user-select: none;
+    }
+    /* Card container */
+    .card {
+      width: 400px;
+      height: 550px;
+      perspective: 1500px;
+      position: relative;
+      border-radius: 25px;
+      overflow: visible;
+      box-shadow:
+        0 0 20px rgba(0, 123, 255, 0.6),
+        inset 0 0 40px rgba(0, 123, 255, 0.4);
+      background: radial-gradient(circle at center, #0056b3, #003366);
+    }
+    .card-front, .card-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+    }
+    .card-back {
+      background-color: #003366;
+      border: 2px solid #3399ff;
+      box-shadow:
+        0 8px 30px rgba(0,0,0,0.7),
+        inset 0 0 50px rgba(0, 123, 255, 0.8);
+      border-radius: 25px;
+      padding: 30px 40px;
+      transform: rotateY(180deg);
+      z-index: 1;
+      color: #d0eaff;
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.6;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .card-inner.flipped .card-back {
+      z-index: 3;
+    }
+    .card-front {
+      z-index: 2;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-inner.flipped .card-front {
+      z-index: 1;
+    }
+    /* Inner card for flip */
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .card:hover .card-inner,
+    .card-inner.flipped {
+      transform: rotateY(180deg);
+      z-index: 9999;
+      box-shadow: 0 0 30px rgba(0, 123, 255, 0.8);
+    }
+    /* Front and back sides */
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 40px;
+      box-shadow:
+        0 8px 20px rgba(0,0,0,0.3),
+        inset 0 0 30px rgba(255,255,255,0.1);
+      background: linear-gradient(145deg, #007bff, #004a99);
+      text-shadow: 0 0 8px rgba(0,0,0,0.4);
+      color: #e0f7ff;
+      transition: z-index 0.3s ease;
+    }
+    .card-front {
+      z-index: 2;
+    }
+    .card-inner.flipped .card-front {
+      z-index: 1;
+    }
+    .card-back {
+      z-index: 1;
+      transform: rotateY(180deg);
+    }
+    .card-inner.flipped .card-back {
+      z-index: 3;
+    }
+    .card-front {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Animated cat emoji with glow and movement */
+    .cat-emoji {
+      font-size: 6rem;
+      margin-top: 25px;
+      animation: catFloat 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px #a0d8ef);
+      user-select: none;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes catFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); filter: drop-shadow(0 0 6px #a0d8ef); }
+      50% { transform: translateY(-15px) rotate(15deg); filter: drop-shadow(0 0 12px #7ec8ff); }
+    }
+    /* Decorative sparkles on front */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #a0d8ef;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #a0d8ef;
+      animation: sparklePulse 3s infinite ease-in-out;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 4px #a0d8ef);
+    }
+    .sparkle:nth-child(1) { top: 20px; left: 30px; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 80px; right: 40px; animation-delay: 1s; }
+    .sparkle:nth-child(3) { bottom: 60px; left: 50px; animation-delay: 2s; }
+    .sparkle:nth-child(4) { bottom: 30px; right: 60px; animation-delay: 1.5s; }
+    @keyframes sparklePulse {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.5); }
+    }
+    /* Back side styling */
+    .card-back {
+      background: linear-gradient(145deg, #004080, #00264d);
+      border: 2px solid #3399ff;
+      transform: rotateY(180deg);
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #d0eaff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      box-shadow:
+        0 8px 30px rgba(0,0,0,0.7),
+        inset 0 0 50px rgba(0, 123, 255, 0.8);
+      border-radius: 25px;
+      padding: 30px 40px;
+    }
+    .thank-you-text {
+      white-space: pre-line;
+      margin-bottom: 50px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 6px rgba(0, 123, 255, 0.7);
+    }
+    .signature {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #7ec8ff;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #7ec8ff;
+    }
+    /* Animated icon: glowing heart with pulse and rotate */
+    .animated-icon {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      font-size: 4rem;
+      color: #ff4c4c;
+      animation: heartPulseRotate 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px #ff4c4c);
+      user-select: none;
+    }
+    @keyframes heartPulseRotate {
+      0%, 100% { transform: scale(1) rotate(0deg); color: #ff4c4c; filter: drop-shadow(0 0 10px #ff4c4c); }
+      50% { transform: scale(1.3) rotate(15deg); color: #ff1a1a; filter: drop-shadow(0 0 20px #ff1a1a); }
+    }
+    /* Flip button */
+    .flip-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: #cce7ff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(204, 231, 255, 0.7);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .flip-button:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+    /* Footer decoration */
+    .footer-text {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      color: #a0c8ff;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-shadow: 0 0 4px #004a99;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" title="Klik tombol untuk balik kartu">
+    <div class="card-inner" id="cardInner">
+      <div class="card-front">
+        Piu
+        <div class="cat-emoji" aria-label="Kucing bergerak" role="img">🐱</div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <button class="flip-button" aria-label="Balik kartu" onclick="toggleFlip()">&#x21bb;</button>
+      </div>
+      <div class="card-back">
+        <div class="thank-you-text">
+          Piii kapan kontennya di upload?? Udah berapa lama hiatus, aku butuh asupan guinnn
+        </div>
+        <div class="signature">
+          Salam hangat dari fansmu
+        </div>
+        <div class="animated-icon" aria-label="Animated heart icon" role="img">❤️</div>
+        <div class="footer-text">Croissantqq ❤️</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleFlip() {
+      const cardInner = document.getElementById('cardInner');
+      cardInner.classList.toggle('flipped');
+    }
+  </script>
+</body>
+</html>
